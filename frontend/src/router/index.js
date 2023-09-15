@@ -85,6 +85,11 @@ const routes = [
     component: () => import("../components/crudProducts/ProductEdit.vue"),
   },
   {
+    path: "/user/edit/:userID",
+    name: "edituser",
+    component: () => import("../components/crudUser/EditUserAdmin.vue"),
+  },
+  {
     path: "/contact",
     name: "contact",
     component: () => import("../views/Home/ContactUsView.vue"),

@@ -68,17 +68,17 @@
 
                 <h1 class="my-5">Users</h1>
                 <div class="col-12 col-lg-3 col-md-6 g-3 custom-grid mb-5" v-for="user in users" :key="user.bmxID">
-                    <div class="card custom-card h-100 w-100" style="width: 14rem;" v-if="bikes">
+                    <div class="card custom-card h-100 w-100" style="width: 14rem;" v-if="users">
                         <div class="card-body">
                             <img :src="user.profileUrl"
                                 class="card-img-top custom-img" alt="...">
                             <h5 class="card-title">{{ user.firstName }}</h5>
                             <h5 class="card-title">{{ user.lastName }}</h5>
-                            <h5 class="card-title mb-5">{{ user.category }}</h5>
+                            <h5 class="card-title mb-5">{{ user.userRole }}</h5>
                             <div class="d-flex btns">
-                                <router-link :to="'/user/edit/' + user.bmxID" class="btn my-2 "><i
+                                <router-link :to="'/user/edit/' + user.userID" class="btn my-2 "><i
                                         class="bi bi-pencil pe-2"></i>Edit</router-link>
-                                <button class="btn" @click="delProd(user.bmxID)" style="color: red">
+                                <button class="btn" @click="delUser(user.userID)" style="color: red">
                                     <i class="bi bi-trash3 pe-2" style="color: red"></i>Delete
                                 </button>
                             </div>
@@ -117,9 +117,9 @@
                                     <td>{{ user.emailAdd }}</td>
                                     <td>{{ user.userRole }}</td>
                                     <td>
-                                        <router-link :to="'/product/edit/' + user.bmxID" class="btn my-2 "><i
+                                        <router-link :to="'/user/edit/' + user.userID" class="btn my-2 "><i
                                                 class="bi bi-pencil pe-2"></i>Edit</router-link>
-                                        <button class="btn" @click="delProd(user.bmxID)" style="color: red">
+                                        <button class="btn" @click="delUser(user.userID)" style="color: red">
                                             <i class="bi bi-trash3 pe-2" style="color: red"></i>Delete
                                         </button>
                                     </td>
@@ -155,7 +155,7 @@ export default {
     },
     computed: {
         ...mapState('products', ['bikes', 'selectedBikeEdit', 'deleteInProgress']),
-        ...mapState('usermodule', ['users'])
+        ...mapState('usermodule', ['users', 'selectedUserEdit'])
     },
     mounted() {
         this.fetchBikes();
@@ -163,7 +163,7 @@ export default {
     },
     methods: {
         ...mapActions('products', ['fetchBikes', 'fetchBike', 'createProd', 'updateBike', 'deleteBike']),
-        ...mapActions('usermodule', ['fetchUsers']),
+        ...mapActions('usermodule', ['fetchUsers', 'fetchUser']),
 
        async delProd(bike) {
 
@@ -185,6 +185,30 @@ export default {
                     )
                     // this.deleteInProgress = true
                     this.deleteBike(bike)
+                }
+            })
+        },
+
+        async delUser(user) {
+
+            this.$store.commit('products/setDeleteInProgress', false)
+            await Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                    // this.deleteInProgress = true
+                    this.deleteBike(user)
                 }
             })
         }

@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "https://bmxcap.onrender.com/";
+const url = "https://wethebmx.onrender.com/";
 
 const state = {
     orders: null

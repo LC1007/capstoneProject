@@ -1,6 +1,6 @@
 import axios from "axios"
 import router from '@/router'
-const url = "https://bmxcap.onrender.com/";
+const url = "https://wethebmx.onrender.com/";
 import sweet from "sweetalert";
 
 const state = {
@@ -19,8 +19,6 @@ const state = {
   searchQuery: "",
   sortBy: "",
   filterBy: '',
-  // Messsages 
-  msg: null
 };
 
 const getters = {
@@ -81,12 +79,6 @@ const mutations = {
   },
   setFilterBy(state, filterBy) {
     state.filterBy = filterBy;
-  },
-
-  // Messages
-
-  setMsg(state, msg) {
-    state.msg = msg;
   },
 };
 
