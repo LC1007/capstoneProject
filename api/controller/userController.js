@@ -106,20 +106,21 @@ module.exports = {
     async updateUser(req, res){
         try {
             const { userID } = req.params
-            const data = req.body
-            const result = await User.updateUser(data, userID)
+            const user = req.body
 
-            return res.json({
-              status: res.statusCode,
+            if(user.userPass){
+                user.userPass = hashSync(user.userPass, 10)
+            }
+
+            const editedUser = await User.updateUser(user, userID)
+
+            return res.status(200).json({
+              status: 200,
               msg: "User has been updated",
-              result,
+              editedUser,
             });
         } catch (error) {
-            console.error(
-              "An error occurred while trying to update user:",
-              error
-            );
-            res.status(500).json({ error: "Failed to update the user" });
+            
         }
     },
 
