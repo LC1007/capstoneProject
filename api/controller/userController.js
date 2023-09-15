@@ -107,12 +107,12 @@ module.exports = {
         try {
             const { userID } = req.params
             const data = req.body
-            const user = await User.updateUser(data, userID)
+            const result = await User.updateUser(data, userID)
 
             return res.json({
               status: res.statusCode,
               msg: "User has been updated",
-              user,
+              result,
             });
         } catch (error) {
             console.error(
