@@ -1,7 +1,7 @@
 const passport = require("../middleware/passport");
 const bcrypt = require("bcrypt");
-const User = require("../model/User");
-const { createToken } = require('../middleware/AuthenicateUser')
+const User = require("../models/Users");
+const { createToken } = require('../middleware/AuthenticateUser')
 
 module.exports = {
     async register(req, res) {

@@ -1,4 +1,4 @@
-const Orders = require('../model/Orders')
+const Orders = require('../models/Orders')
 
 module.exports = {
     async addOrder(req, res){

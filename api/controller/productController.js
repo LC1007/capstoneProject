@@ -1,4 +1,4 @@
-const Products = require("../model/Products");
+const Products = require("../models/Products");
 
 module.exports = {
   async fetchProducts(req, res) {
