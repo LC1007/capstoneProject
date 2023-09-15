@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Footer from '@/components/FooterComp.vue'
+import Footer from '@/components/HomeComponents/FooterComp.vue'
 export default{
   components:{
     Footer

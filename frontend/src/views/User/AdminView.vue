@@ -133,7 +133,7 @@
 </template>
 
 <script>
-import Navbar from '@/components/TestNav.vue'
+import Navbar from '@/components/HomeComponents/NavbarComp.vue'
 import { mapActions, mapState } from 'vuex'
 import Swal from 'sweetalert2'
 

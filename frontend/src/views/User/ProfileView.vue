@@ -1,17 +1,7 @@
 <template>
     <div>
         <Navbar />
-
-        
-
-        <!-- <div v-if="user">
-            <h2>{{ user.firstName }}</h2>
-        </div>
-        <div v-else>
-            <p>Loading...</p>
-        </div> -->
-
-        <div class="container mb-5">
+<div class="container mb-5">
             <div class="row" v-if="user">
                 <div class="d-flex align-items-center justify-content-center">
                 <h1 class="text-center my-5">Profile</h1>
@@ -59,8 +49,7 @@
                         </template>
 
                         <template v-if="user.isEdit">
-                            <!-- <h4>Password</h4>
-                            <input type="text" class="form-control" v-model="user.userPass"> -->
+
                             <button class="btn" @click="btnPassword(user)">Reset Password?</button>
 
                             <template v-if="user.showPassword">
@@ -84,11 +73,6 @@
                             </button>
                         </div>
                     </template>
-                    <!-- <template v-if="!bike.isEdit">
-                        <button class="btn" @click="delProd(user.bmxID)" style="color: red">
-                            <i class="bi bi-trash3 pe-2" style="color: red"></i>Delete
-                        </button>
-                    </template> -->
                 </div>
             </div>
             <div v-else>
@@ -100,7 +84,7 @@
 </template>
 
 <script>
-import Navbar from '@/components/TestNav.vue'
+import Navbar from '@/components/HomeComponents/NavbarComp.vue'
 import { mapActions, mapState } from 'vuex'
 export default {
     components: {

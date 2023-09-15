@@ -14,6 +14,9 @@
                   <li class="nav-item">
                     <router-link to="/about" class="nav-link">About Us</router-link>
                   </li>
+                  <li class="nav-item">
+                    <router-link to="/contact" class="nav-link">Contact Us</router-link>
+                  </li>
                 <li class="nav-item">
                     <router-link to="/events" class="nav-link">Events</router-link>
                   </li>

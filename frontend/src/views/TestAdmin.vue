@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import ProductEditModal from '@/components/ProductEdit.vue';
+import ProductEditModal from '@/components/crudProducts/ProductEdit.vue';
 
 export default {
     data() {

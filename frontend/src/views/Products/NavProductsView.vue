@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import TabWrapperVue from '@/components/TabWrapper.vue'
-import TabsVue from '@/components/Tabs.vue'
+import TabWrapperVue from '@/components/HomeComponents/NavbarComp.vue'
+import TabsVue from '@/components/ProductFiltering/Tabs.vue'
 import AllProductsComp from '@/components/ProductFiltering/AllProductsComp.vue';
 import Frames from '@/components/ProductFiltering/FramesComp.vue'
 import Bars from '@/components/ProductFiltering/HandlebarsComp.vue'

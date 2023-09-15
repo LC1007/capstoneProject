@@ -23,12 +23,6 @@
                 </div>
                 <div class="mb-3">
                     <label for="category" class="form-label">Category</label>
-                    <!-- <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">Street BMX</option>
-                        <option value="2">Vert BMX</option>
-                        <option value="3">Park BMX</option>
-                    </select> -->
                     <input type="text" class="form-control" v-model="addProd.category">
                 </div>
                 <div class="mb-3">
@@ -43,7 +37,7 @@
 </template>
 
 <script>
-import Navbar from '@/components/TestNav.vue'
+import Navbar from '@/components/HomeComponents/NavbarComp.vue'
 import { mapActions } from 'vuex'
 import router from '@/router'
 import Swal from 'sweetalert2'

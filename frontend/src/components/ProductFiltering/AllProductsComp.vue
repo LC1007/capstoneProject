@@ -14,15 +14,11 @@
                             <form @submit.prevent="searchForm">
                                 <input type="text" class="form-control w-100 h-100 me-2 custom-input" v-model="searchQuery"
                                     placeholder="BMX">
-                                <div v-if="message">
-                                    <p>{{ message }}</p>
-                                </div>
-                                <button class="btn">Search</button>
                             </form>
-                            <i class="bi bi-x-circle custom-icon" @click="clear"></i>
+                            <i class="bi bi-x-circle" @click="clear"></i>
                         </div>
-                            <button class="btn btn-dark w-100 h-100 my-2" @click="sortBikes('prodName')">Sort By Name</button>
-                            <button class="btn btn-dark w-100 h-100 my-2" @click="sortBikes('amount')">Sort By Price</button>
+                            <button class="btn w-100 h-100 my-2" style="outline: 1px solid black" @click="sortBikes('prodName')">Sort By Name</button>
+                            <button class="btn w-100 h-100 my-2" style="outline: 1px solid black" @click="sortBikes('amount')">Sort By Price</button>
                     </div>
                 </div>
                 <div class="col mb-5">
@@ -130,10 +126,30 @@ img {
     width: 100%;
 }
 
+.custom-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+i {
+    margin-left: 10px;
+}
+
 .custom-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
+}
+
+
+.custom-group{
+    display: flex;
+    align-items: center;
+}
+
+i{
+    margin-left: 10px;
 }
 
 .custom-input {

@@ -12,26 +12,11 @@
           </li>
         </ol>
       </nav>
-      <!-- <div class="row m-5">
-                <div class="col-12 col-lg-6 col-md-6">
-                    <img :src="selectedBike.prodUrl" class="custom-img" alt="">
-                </div>
-                <div class="col-12 col-lg-6 col-md-6 ps-5" v-if="selectedBike">
-                    <h1>{{ selectedBike.prodName }}</h1>
-                    <p>R{{ selectedBike.amount }}</p>
-                    <p>{{ selectedBike.prodDesc }}</p>
-                    <button class="btn btn-dark" @click="addToCart(selectedBike)">Add to cart</button>
-                </div>
-                <div v-else>
-                    <p>loading...</p>
-                </div>
-            </div> -->
       <div
         class="d-sm-flex justify-content-center m-2 m-5 gap-3"
         v-if="selectedBike"
       >
         <div>
-          <!-- <img src="https://i.postimg.cc/Prw4TBd6/thumb-63ac298f5d165.jpg" alt=""> -->
           <img :src="selectedBike.prodUrl" class="custom-img pe-md-5" alt="" />
         </div>
         <div class="w-75">
@@ -53,7 +38,7 @@
 </template>
 
 <script>
-import Navbar from "@/components/TestNav.vue";
+import Navbar from "@/components/HomeComponents/NavbarComp.vue";
 import { mapActions, mapState } from "vuex";
 import { useCookies } from "vue3-cookies";
 const { cookies } = useCookies();

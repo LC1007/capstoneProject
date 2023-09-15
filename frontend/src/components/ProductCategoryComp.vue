@@ -13,6 +13,7 @@
             <option value="street bmx">Street BMX</option>
             <option value="vert bmx">Ver BMX</option>
         </select>
+        <p>dasdsad</p>
 
         <ul>
             <li v-for="item in filteredAndSortedData" :key="item.bmxID">

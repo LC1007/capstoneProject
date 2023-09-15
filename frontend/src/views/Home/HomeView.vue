@@ -7,9 +7,8 @@
       <div class="container">
         <div class="row m-5">
           <div class="col-12 col-lg-6 col-md-6">
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem, autem suscipit harum eum temporibus iste voluptas ratione reprehenderit quaerat sed.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed voluptatibus ex itaque, omnis quibusdam sit voluptates cum, aliquid laborum sint recusandae quod velit accusantium fuga architecto id incidunt modi?</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur amet nam porro, commodi voluptatum iure nemo dignissimos hic autem? Voluptas consequuntur aperiam recusandae voluptatem ullam facilis nulla magni illo tempora?</p>
+            <p>"Welcome to BMX WORLD, your premier online destination for all things BMX. Dive into a world of extreme sports excitement,  thrilling universe of BMX. Join us today and unleash your passion for pedal-powered adrenaline!"</p>
+            <p>From jaw-dropping tricks and the latest gear to expert tips and a thriving BMX community. Whether you're a beginner or a seasoned rider, our website is your gateway to the</p>
           </div>
           <div class="col-12 col-lg-6 col-md-6">
             <img src="https://i.postimg.cc/sgJKsQkg/pexels-zach-service-922936.jpg" class="custom-square-img w-100" alt="">
@@ -74,7 +73,7 @@
         <div class="row my-5">
           <div class="col-12 col-lg-6 col-md-6">
             <h1 class="display-1 fw-bold">ONLY THE BEST FOR THE BEST</h1>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut minus optio expedita aut voluptatum blanditiis repellendus ullam ducimus. Explicabo hic dolorum quibusdam exercitationem, in dolores reprehenderit ab incidunt recusandae optio!</p>
+            <p>Are you ready to embark on an adrenaline-fueled journey through the world of BMX? Look no further! Our BMX website is your one-stop destination for everything BMX-related. Whether you're a seasoned pro or just starting out, we've got you covered.</p>
             <button class="btn btn-dark">Buy now</button>
           </div>
           <div class="col-12 col-lg-6 col-md-6">
@@ -88,7 +87,7 @@
 </template>
 
 <script>
-import Navbar from '@/components/TestNav.vue'
+import Navbar from '@/components/HomeComponents/NavbarComp.vue'
 import { mapActions, mapState } from 'vuex'
 
 export default{
