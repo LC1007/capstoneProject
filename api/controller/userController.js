@@ -117,7 +117,7 @@ module.exports = {
             return res.status(200).json({
               status: 200,
               msg: "User has been updated",
-              editedUser,
+              editedUser.info,
             });
         } catch (error) {
             
