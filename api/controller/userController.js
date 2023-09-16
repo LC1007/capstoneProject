@@ -162,7 +162,7 @@ module.exports = {
                 }
                 const token = createToken(user);
 
-                const userData = await User.findUserByEmail(user.emailAdd)
+                const result = await User.findUserByEmail(user.emailAdd)
 
                 res.cookie('jwt', token, {
                     httpOnly: true,
@@ -171,8 +171,7 @@ module.exports = {
 
                 return res.json({ 
                     token,
-                    result: userData,
-                    userID: userData.userID,
+                    result,
                     msg: "Login successful" 
                 });
 
