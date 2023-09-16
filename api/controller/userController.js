@@ -106,7 +106,7 @@ module.exports = {
     async updateUser(req, res){
         try {
             const { userID } = req.params
-            const user = req.body
+            const data = req.body
 
             if(data.userPass){
                 data.userPass = hashSync(data.userPass, 10)
