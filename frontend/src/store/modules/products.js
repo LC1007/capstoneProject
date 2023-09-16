@@ -98,7 +98,7 @@ const actions = {
     try {
       const { result } = (await axios.get(`${url}product/${bmxID}`)).data;
 
-      localStorage.setItem("bikeID", result.ID);
+      localStorage.setItem("bikeID", result[0].bmxID);
 
       commit("setSelectedBike", result[0]);
       commit("setSelectedBikeEdit", result[0]);

@@ -117,7 +117,7 @@
                                     <td>{{ user.emailAdd }}</td>
                                     <td>{{ user.userRole }}</td>
                                     <td>
-                                        <router-link :to="'/user/edit/' + user.userID" class="btn my-2 "><i
+                                        <router-link :to="'/user/edit/admin/' + user.userID" class="btn my-2 "><i
                                                 class="bi bi-pencil pe-2"></i>Edit</router-link>
                                         <button class="btn" @click="delUser(user.userID)" style="color: red">
                                             <i class="bi bi-trash3 pe-2" style="color: red"></i>Delete
@@ -155,7 +155,7 @@ export default {
     },
     computed: {
         ...mapState('products', ['bikes', 'selectedBikeEdit', 'deleteInProgress']),
-        ...mapState('usermodule', ['users', 'selectedUserEdit'])
+        ...mapState('usermodule', ['users', 'selectedUserEdit', 'deleteInProgress'])
     },
     mounted() {
         this.fetchBikes();
@@ -163,7 +163,7 @@ export default {
     },
     methods: {
         ...mapActions('products', ['fetchBikes', 'fetchBike', 'createProd', 'updateBike', 'deleteBike']),
-        ...mapActions('usermodule', ['fetchUsers', 'fetchUser']),
+        ...mapActions('usermodule', ['fetchUsers', 'fetchUser', 'updateUser']),
 
        async delProd(bike) {
 

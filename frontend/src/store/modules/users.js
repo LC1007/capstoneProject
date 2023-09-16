@@ -17,8 +17,8 @@ const state = {
 };
 
 const mutations = {
-  setUsers(state, data) {
-    state.users = data;
+  setUsers(state, updatedUser) {
+    state.users = updatedUser;
   },
   setUser(state, data) {
     state.user = data;
@@ -36,15 +36,15 @@ const mutations = {
     state.successMsg = null;
     state.errMsg = null;
   },
-  setUpdateUser(state, updatedUser) {
-    const exisitingUserID = state.users.findIndex(
-      (user) => user.userID === updatedUser.userID
-    );
-    if (exisitingUserID !== 1) {
-      state.users[exisitingUserID] = updatedUser;
-    }
-  },
-  selectedUserEdit(state, user) {
+  // setUpdateUser(state, updatedUser) {
+  //   const exisitingUserID = state.users.findIndex(
+  //     (user) => user.userID === updatedUser.userID
+  //   );
+  //   if (exisitingUserID !== 1) {
+  //     state.users[exisitingUserID] = updatedUser;
+  //   }
+  // },
+  setSelectedUserEdit(state, user) {
     state.selectedUserEdit = user;
   },
   setDeleteInProgress(state, value) {
@@ -66,11 +66,9 @@ const actions = {
     try {
       const { user } = (await axios.get(`${url}user/${userID}`)).data;
 
-      localStorage.setItem("fetchUserID", user[0].userID);
-      commit("setUser", user[0]);
-      commit("selectedUserEdit", user[0]);
-      commit('setUserID', user[0].userID)
-      console.log("User ID: ",user[0].userID);
+      commit("setSelectedUserEdit", user[0]);
+      commit("setUserID", user[0].userID);
+      console.log("User ID: ", user[0].userID);
     } catch (error) {
       console.log("There was an error trying to fetch user with ID:", userID);
     }
@@ -78,22 +76,18 @@ const actions = {
 
   async updateUser({ commit, dispatch }, user) {
     try {
-      const { editedUser } = (
-        await axios.patch(`${url}user/${user.userID}`, user)
-      ).data;
-      commit("setUsers", editedUser);
-      console.log(editedUser);
-      dispatch("fetchUsers");
-      router.push({ name: "admin" });
+      const { data } = await axios.patch(`${url}user/${user.userID}`, user);
+      commit("setUsers", data);
+      dispatch('fetchUsers')
     } catch (error) {
       console.log(error);
     }
   },
 
-  async deleteUser({ commit, dispatch }, user) {
+  async deleteUser({ commit, dispatch }, {user, userID}) {
     commit("setDeleteInProgress", true);
     try {
-      const { msg } = (await axios.delete(`${url}user/${user.userID}`)).data;
+      const { msg } = (await axios.delete(`${url}user/${userID}`)).data;
       if (msg) {
         commit("setUser", msg);
         dispatch("fetchUsers");
@@ -130,16 +124,17 @@ const actions = {
 
   async submitLogin({ commit }, loginData) {
     try {
-      const { msg, token, result, userID, errMsg } = (
+      const { msg, token, result } = (
         await axios.post(`${url}login`, loginData)
       ).data;
-      if (result) {
-        localStorage.setItem("userID", userID);
+      if (msg) {
+        localStorage.setItem("userID", result.userID);
 
-        commit("setUser", { result });
-        commit("setUserID", userID);
+        console.log("Test:", result);
+        console.log("ID:", result.userID);
 
-        console.log(result);
+        commit("setUser",  result );
+        commit("setUserID", result.userID);
 
         cookies.set("loggedInUser", { token, result });
         authUser.applyToken(token);

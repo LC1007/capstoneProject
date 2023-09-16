@@ -13,7 +13,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="lastName" class="form-label">Last Name</label>
-                            <input type="text" v-model="selectedUserEdit.lastName" class="form-control" name="lastName">
+                        <input type="text" v-model="selectedUserEdit.lastName" class="form-control" name="lastName">
                     </div>
                     <div class="mb-3">
                         <label for="userDOB" class="form-label">User DOB</label>
@@ -32,11 +32,12 @@
                         <input type="text" v-model="selectedUserEdit.userRole" class="form-control" id="role">
                     </div>
                     <div class="mb-3">
-                            <label for="userPass" class="form-label">Role</label>
-                            <input type="text" v-model="selectedUserEdit.userPass" class="form-control" id="role">
-                        </div>
+                        <label for="userPass" class="form-label">Role</label>
+                        <input type="text" v-model="selectedUserEdit.userPass" class="form-control" id="role">
+                    </div>
                     <router-link to="/admin" class="btn btn-dark my-3">Cancel</router-link>
-                    <button type="submit" class="btn btn-dark my-3 ms-3" @click="saveUserEdit(selectedUserEdit)">Update</button>
+                    <button type="submit" class="btn btn-dark my-3 ms-3"
+                        @click="userEditFunc(selectedUserEdit)">Update</button>
                 </div>
                 <div v-else>
                     <div class="d-flex justify-content-center w-100 mb-5">
@@ -54,6 +55,7 @@
 import Navbar from '@/components/HomeComponents/NavbarComp.vue'
 import { mapActions, mapState } from 'vuex'
 import sweet from 'sweetalert'
+import router from "@/router";
 
 export default {
     data() {
@@ -65,7 +67,7 @@ export default {
                     userDOB: selectedUserEdit?.userDOB || '',
                     emailAdd: selectedUserEdit?.emailAdd || '',
                     profileUrl: selectedUserEdit?.profileUrl || '',
-                    userRole: selectedUserEdit?.userRole  || '',
+                    userRole: selectedUserEdit?.userRole || '',
                     userPass: selectedUserEdit?.userPass || ''
                 }
             }
@@ -79,17 +81,17 @@ export default {
     },
     methods: {
         ...mapActions('usermodule', ['fetchUser', 'updateUser']),
-        async saveUserEdit(user) {
-            console.log(user);
+        async userEditFunc(userEdit) {
+            console.log(userEdit);
             try {
-                const userID = localStorage.getItem('userID')
-                await this.updateUser({user, userID})
+                await this.updateUser(userEdit)
                 sweet({
                     title: 'User',
                     text: 'User Updated',
                     icon: 'success',
                     timer: 4000
                 })
+                router.push({ name: "profile" });
             } catch (error) {
                 console.error('Error updating user:', error);
                 console.log('User:', user);

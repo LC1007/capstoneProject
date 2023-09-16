@@ -35,7 +35,11 @@
                     <button type="submit" class="btn btn-dark my-3 ms-3" @click="saveEdit(selectedBikeEdit)">Update</button>
                 </div>
                 <div v-else>
-                    <p>Loading...</p>
+                    <div class="d-flex justify-content-center w-100 mb-5">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
@@ -72,6 +76,7 @@ export default {
         ...mapActions('products', ['fetchBike', 'updateBike']),
         async saveEdit(bike) {
             try {
+                console.log(bike);
                 await this.updateBike(bike)
                 sweet({
                     title: 'Product',

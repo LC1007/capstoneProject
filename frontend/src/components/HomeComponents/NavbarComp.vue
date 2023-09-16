@@ -40,13 +40,16 @@
                             <router-link to="/cart" class="nav-link" v-if="hasCookie"><i class="bi bi-bag-fill pe-2"></i></router-link>
                           </li>
                         <div class="d-sm-flex d-lg-flex flex-sm-column flex-lg-column align-items-center pt-2">
-                            <li class="nav-item" v-if="user">
+                            <li class="nav-item" v-if="result">
                                 <router-link to="/profile" class="nav-link p-0" v-if="hasCookie">
-                                    <img :src=user.profileUrl style="width: 2rem" alt="">
+                                    <img :src=result.profileUrl style="width: 2rem" alt="">
                                 </router-link>
                             </li>
-                            <li class="nav-item" v-if="user">
-                                <p class="nav-link p-0">Welcome, {{ user.firstName }}</p>
+                            <li class="nav-item" v-if="result">
+                                <p class="nav-link p-0">Welcome, {{ result.firstName }}</p>
+                              </li>
+                              <li v-else>
+                                <p class="nav-link p-0">Test</p>
                               </li>
                         </div>
                     </div>
@@ -64,16 +67,19 @@
 </template>
 
 <script>
-    import { useCookies } from 'vue3-cookies'
 import { mapActions, mapState } from 'vuex'
+import { useCookies } from 'vue3-cookies'
 const { cookies } = useCookies()
   export default {
     computed:{
       user(){
         return this.$store.state.usermodule.user || cookies.get('loggedInUser')
       },
+      result(){
+        return this.user?.result
+      },
       isAdmin(){
-        return this.user?.userRole?.toLowerCase() === 'admin'
+        return this.result?.userRole?.toLowerCase() === 'admin'
       },
       hasCookie(){
         return cookies.get('loggedInUser') !== null
