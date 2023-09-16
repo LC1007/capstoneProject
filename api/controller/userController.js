@@ -1,5 +1,5 @@
 const passport = require("../middleware/passport");
-const bcrypt = require("bcrypt");
+const { hash, hashSync} = require("bcrypt");
 const User = require("../models/Users");
 const { createToken } = require('../middleware/AuthenticateUser')
 
@@ -26,7 +26,7 @@ module.exports = {
                 })
             }
 
-            const hashedPassword = await bcrypt.hash(userPass, 10)
+            const hashedPassword = await hash(userPass, 10)
 
             const user = {
               firstName,
