@@ -120,7 +120,12 @@ module.exports = {
               editedUser
             });
         } catch (error) {
-            
+            console.error(error);
+  return res.status(500).json({
+    status: 500,
+    msg: "An error occurred while updating the user",
+    error: error.message, // Include an error message for debugging
+  });
         }
     },
 
