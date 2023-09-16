@@ -106,13 +106,13 @@ module.exports = {
     async updateUser(req, res){
         try {
             const { userID } = req.params
-            const data = req.body
+            const user = req.body
 
             if(data.userPass){
                 data.userPass = hashSync(data.userPass, 10)
             }
 
-            const editedUser = await User.updateUser(data, userID)
+            const data = await User.updateUser(data, userID)
 
             return res.status(200).json({
               status: 200,
