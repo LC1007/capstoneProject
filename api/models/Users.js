@@ -58,7 +58,7 @@ class User {
   static async findUserByEmail(emailAdd) {
     try {
       console.log("Trying to find user with email:", emailAdd);
-      const query = `SELECT userID, firstName, lastName, gender, userDOB, emailAdd, userPass, userRole FROM Users WHERE emailAdd = ?`;
+      const query = `SELECT userID, firstName, lastName, gender, userDOB, emailAdd, userPass, userRole, profileUrl FROM Users WHERE emailAdd = ?`;
       const [rows] = await db.query(query, [emailAdd]);
 
       console.log("User found:", rows[0]);
