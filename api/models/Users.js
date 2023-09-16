@@ -33,10 +33,10 @@ class User {
     }
   }
 
-  static async updateUser(user, userID){
+  static async updateUser(data, userID){
     try {
       const query = `UPDATE Users SET ? WHERE userID = ?`
-      const [result] = await db.query(query,[user, userID])
+      const [result] = await db.query(query,[data, userID])
 
       return result
     } catch (error) {
