@@ -112,12 +112,12 @@ module.exports = {
                 data.userPass = hashSync(data.userPass, 10)
             }
 
-            const data = await User.updateUser(data, userID)
+            const result = await User.updateUser(data, userID)
 
             return res.status(200).json({
               status: 200,
               msg: "User has been updated",
-              data
+              result
             });
         } catch (error) {
             console.error(error);
