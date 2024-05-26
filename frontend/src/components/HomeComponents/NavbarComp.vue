@@ -49,7 +49,7 @@
                                 <p class="nav-link p-0">Welcome, {{ result.firstName }}</p>
                               </li>
                               <li v-else>
-                                <p class="nav-link p-0">Test</p>
+                                <p class="nav-link p-0"></p>
                               </li>
                         </div>
                     </div>
